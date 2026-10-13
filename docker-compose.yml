@@ -1,0 +1,24 @@
+services:
+  # Servidor de autorización OAuth 2.0 + API protegida con JWT
+  auth-server:
+    build: ./servidor
+    container_name: llave-segura-auth
+    ports:
+      - "9000:8080"
+    environment:
+      ISSUER: "http://localhost:9000"
+      JWT_SECRET: "cambia-este-secreto-por-uno-largo-y-aleatorio"
+      ACCESS_TTL_SECONDS: "60"
+    restart: unless-stopped
+
+  # App Flutter compilada para web, servida por nginx
+  web:
+    image: nginx:alpine
+    container_name: llave-segura-web
+    ports:
+      - "8082:80"
+    volumes:
+      - ./app/build/web:/usr/share/nginx/html:ro
+    depends_on:
+      - auth-server
+    restart: unless-stopped

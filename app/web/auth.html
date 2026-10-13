@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Autenticación completa</title>
+<p>Autenticación completa. Si esta ventana no se cierra sola, ciérrala.</p>
+<script>
+  function enviarResultado() {
+    const mensaje = { 'flutter-web-auth-2': window.location.href };
+
+    if (window.opener) {
+      window.opener.postMessage(mensaje, window.location.origin);
+      window.close();
+    } else if (window.parent && window.parent !== window) {
+      window.parent.postMessage(mensaje, window.location.origin);
+    } else {
+      localStorage.setItem('flutter-web-auth-2', window.location.href);
+      window.close();
+    }
+  }
+
+  enviarResultado();
+</script>

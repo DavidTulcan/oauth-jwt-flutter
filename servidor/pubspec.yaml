@@ -1,0 +1,14 @@
+name: servidor_oauth
+description: Servidor OAuth 2.0 (Authorization Code + PKCE) que emite JWT, y API protegida.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+dependencies:
+  crypto: ^3.0.7
+  dart_jsonwebtoken: ^3.4.1
+  shelf: ^1.4.2
+  shelf_router: ^1.1.4
+dev_dependencies:
+  test: ^1.33.0

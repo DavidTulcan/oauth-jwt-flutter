@@ -1,0 +1,7 @@
+.env
+*.apk
+app/build/
+app/.dart_tool/
+servidor/.dart_tool/
+app/android/.gradle/
+app/android/local.properties
